@@ -31,12 +31,12 @@ cursor = conn.cursor()
 updatecursor = conn.cursor()
 insertcursor = conn.cursor()
 
-ASK_CHANNEL_ID = "C03EPSPVCDV"
-LOGGER_CHANNEL_ID = "C0411JUS589"
+ASK_CHANNEL_ID = "C041K90RKJA"
+LOGGER_CHANNEL_ID = "C041K90RKJA"
 SLACK_BOT_TOKEN = client.get_secret("tama-BOT-TOKEN").value
 SLACK_SIGNING_SECRET = client.get_secret("tama-BOT-signInSecret").value
 SLACK_APP_TOKEN = client.get_secret("tama-BOT-APP-TOKEN").value
-channelid ="C0411JUS589"
+channelid ="C041K90RKJA"
 # ボットトークンと署名シークレットを使ってアプリを初期化します
 app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
