@@ -38,13 +38,14 @@ SLACK_BOT_TOKEN = client.get_secret("SLACK-BOT-TOKEN-test").value
 SLACK_SIGNING_SECRET = client.get_secret("TEST-SLACK-SECRET").value
 SLACK_APP_TOKEN = client.get_secret("SLACK-APP-TOKEN-test").value
 channelid ="C041K90RKJA"
-
+# ボットトークンと署名シークレットを使ってアプリを初期化します
+app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
 # Use connect() method as start() blocks the current thread
 handler.connect()
 
-# ボットトークンと署名シークレットを使ってアプリを初期化します
-app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
+
+
 
 @app.command("/tama")
 def open_modal(ack, body, client):
@@ -416,7 +417,7 @@ def message_search(body, say,message):
      say("エラーが発生したニャン・・・", thread_ts=thread_ts)
      say(f"<#{channelid}> で <@{userid}> が *{query}* を検索してエラーがでたにゃん。", channel=LOGGER_CHANNEL_ID)
 
-    from flask import Flask, request
+from flask import Flask, request
 flask_app = Flask(__name__)
 
 # You won't use the Flask adapter as all the event requests are handled by the above Socket Mode connection
@@ -426,3 +427,6 @@ flask_app = Flask(__name__)
 @flask_app.route("/", methods=["GET"])
 def index():
     return "Hello World"
+    
+if __name__ == "__main__":
+    flask_app.run(host="0.0.0.0", port=3000)
