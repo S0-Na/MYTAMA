@@ -1,7 +1,6 @@
 import pyodbc
 import os
 import re
-from typing import Callable
 from slack_bolt import App, Say, BoltContext
 from slack_sdk import WebClient
 from slack_bolt.adapter.socket_mode import SocketModeHandler
