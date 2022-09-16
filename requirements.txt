@@ -1,0 +1,14 @@
+pip==22.2.2
+pymortar==2.0.8
+flask
+requests
+azure-identity
+azure.keyvault.secrets
+azure.storage.queue
+pyodbc
+typing
+slack_bolt 
+slack_sdk 
+datetime
+jaconv
+websocket
