@@ -18,7 +18,6 @@ KVUri = f"https://{keyVaultName}.vault.azure.net"
 
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
-
 server = 'sql-sbx-tama.database.windows.net'
 database = 'tama'
 username = 'tamasbx'
@@ -39,6 +38,11 @@ SLACK_BOT_TOKEN = client.get_secret("SLACK-BOT-TOKEN-test").value
 SLACK_SIGNING_SECRET = client.get_secret("TEST-SLACK-SECRET").value
 SLACK_APP_TOKEN = client.get_secret("SLACK-APP-TOKEN-test").value
 channelid ="C041K90RKJA"
+
+handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
+# Use connect() method as start() blocks the current thread
+handler.connect()
+
 # ボットトークンと署名シークレットを使ってアプリを初期化します
 app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
@@ -412,6 +416,13 @@ def message_search(body, say,message):
      say("エラーが発生したニャン・・・", thread_ts=thread_ts)
      say(f"<#{channelid}> で <@{userid}> が *{query}* を検索してエラーがでたにゃん。", channel=LOGGER_CHANNEL_ID)
 
-# アプリを起動します
-if __name__ == "__main__":
-    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
+    from flask import Flask, request
+flask_app = Flask(__name__)
+
+# You won't use the Flask adapter as all the event requests are handled by the above Socket Mode connection
+# from slack_bolt.adapter.flask import SlackRequestHandler
+# handler = SlackRequestHandler(app)
+
+@flask_app.route("/", methods=["GET"])
+def index():
+    return "Hello World"
