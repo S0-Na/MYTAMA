@@ -33,9 +33,9 @@ insertcursor = conn.cursor()
 
 ASK_CHANNEL_ID = "C041K90RKJA"
 LOGGER_CHANNEL_ID = "C041K90RKJA"
-SLACK_BOT_TOKEN = client.get_secret("tama-BOT-TOKEN").value
-SLACK_SIGNING_SECRET = client.get_secret("tama-BOT-signInSecret").value
-SLACK_APP_TOKEN = client.get_secret("tama-BOT-APP-TOKEN").value
+SLACK_BOT_TOKEN = client.get_secret("SLACK-BOT-TOKEN-test").value
+SLACK_SIGNING_SECRET = client.get_secret("TEST-SLACK-SECRET").value
+SLACK_APP_TOKEN = client.get_secret("SLACK-APP-TOKEN-test").value
 channelid ="C041K90RKJA"
 # ボットトークンと署名シークレットを使ってアプリを初期化します
 app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
@@ -412,4 +412,4 @@ def message_search(body, say,message):
 
 # アプリを起動します
 if __name__ == "__main__":
-    main()
+    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
