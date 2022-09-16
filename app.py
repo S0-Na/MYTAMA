@@ -412,4 +412,4 @@ def message_search(body, say,message):
 
 # アプリを起動します
 if __name__ == "__main__":
-    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
+    main()
