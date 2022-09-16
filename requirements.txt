@@ -11,4 +11,5 @@ slack_bolt
 slack_sdk 
 datetime
 jaconv
+Flask>=1.0
 websocket
