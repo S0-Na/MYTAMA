@@ -92,27 +92,6 @@ end
 		deactivate slack
 ```
 
-**追加機能候補**
-
-- ~~“/tama add term”, “/tama update term”, “/tama show term”~~
-- 解説してってメンションするとキーワードを全部拾って補足してくれるとかはどうだろう(樽石さん)
-    
-    [https://w1651113233-h1h237766.slack.com/archives/C03FSMMH81G/p1662699494325029](https://w1651113233-h1h237766.slack.com/archives/C03FSMMH81G/p1662699494325029)
-    
-- 大量メッセージで並行処理が必要な場合などには非同期にして対応（キュー）
-    
-    [https://w1651113233-h1h237766.slack.com/archives/C0411JUS589/p1662781048155219](https://w1651113233-h1h237766.slack.com/archives/C0411JUS589/p1662781048155219)
-    
-- 更新の時に元の文章を見たい
-- `‘`を認識して正規表現に置換する
-- Userごとに検索回数、作成回数、更新回数、各日付をログ
-- 日別でよく検索された単語をつぶやく
-
-作成ツール
-
-Modal
-
-[Slack](https://app.slack.com/block-kit-builder/T03DBKL55FW#%7B%22title%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%E3%81%9F%E3%81%BE%E7%94%A8%E8%AA%9E%E6%9B%B4%E6%96%B0%22%7D,%22submit%22:%7B%22type%22:%22plain_text%22,%22text%22:%22Submit%22%7D,%22blocks%22:%5B%7B%22type%22:%22input%22,%22element%22:%7B%22type%22:%22plain_text_input%22,%22action_id%22:%22term%22,%22placeholder%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%E6%9B%B4%E6%96%B0%E3%81%97%E3%81%9F%E3%81%84%E7%94%A8%E8%AA%9E%22%7D%7D,%22label%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%E7%94%A8%E8%AA%9E%22%7D%7D,%7B%22type%22:%22input%22,%22element%22:%7B%22type%22:%22plain_text_input%22,%22action_id%22:%22explain%22,%22placeholder%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%E6%9B%B4%E6%96%B0%E3%81%97%E3%81%9F%E3%81%84%E7%94%A8%E8%AA%9E%E3%81%AE%E8%AA%AC%E6%98%8E%22%7D%7D,%22label%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%E8%AA%AC%E6%98%8E%22%7D%7D%5D,%22type%22:%22modal%22%7D)
 
 SlackBolt
 
