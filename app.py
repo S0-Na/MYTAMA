@@ -18,8 +18,8 @@ KVUri = f"https://{keyVaultName}.vault.azure.net"
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
 server = 'sql-sbx-tama.database.windows.net'
-database = 'tama'
-username = 'tamasbx'
+database = 'your database name'
+username = 'your database admin name'
 azure_sql_password =client.get_secret("tamaSql-Pass")
 print(azure_sql_password)
 password = '{'+str(azure_sql_password.value)+'}'   
@@ -31,20 +31,14 @@ cursor = conn.cursor()
 updatecursor = conn.cursor()
 insertcursor = conn.cursor()
 
-ASK_CHANNEL_ID = "C041K90RKJA"
-LOGGER_CHANNEL_ID = "C041K90RKJA"
-SLACK_BOT_TOKEN = client.get_secret("SLACK-BOT-TOKEN-test").value
-SLACK_SIGNING_SECRET = client.get_secret("TEST-SLACK-SECRET").value
-SLACK_APP_TOKEN = client.get_secret("SLACK-APP-TOKEN-test").value
-channelid ="C041K90RKJA"
+ASK_CHANNEL_ID = ""
+LOGGER_CHANNEL_ID = ""
+channelid =""
 # ボットトークンと署名シークレットを使ってアプリを初期化します
 app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
 # Use connect() method as start() blocks the current thread
 handler.connect()
-
-
-
 
 @app.command("/tama")
 def open_modal(ack, body, client):
